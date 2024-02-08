@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Template</title>
+        <title>PHP Password Generator</title>
 
         <!-- Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -27,14 +27,29 @@
 
     <body>
         
-        <div id="app">
-            <h1>
-                {{ message }}
+       <div class="container">
+            <h1 class="text-center pt-5 fw-bold">
+                PHP Password Generator
             </h1>
-        </div>
+
+            <form action="" method="post" class="row">
+                <div class="col text-center mt-4">
+                    <label for="password">
+                        Lunghezza della tua password
+                    </label>
+                    <input type="number" class="form-control mt-4" id="password" name="password" placeholder='Quanto deve essere lunga la tua password?' required min="4" max="15">
+                </div>
+                <div class="text-center mt-4">
+                    <button class="btn btn-primary" type="submit">
+                        Genera la mia password
+                    </button>
+                </div>
+
+            </form>
+       </div>
 
         <!-- JS -->
-        <script src="js/script.js" type="text/javascript"></script>
+        <!-- <script src="js/script.js" type="text/javascript"></script> -->
 
     </body>
 </html>
