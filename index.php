@@ -1,18 +1,11 @@
 <?php
+    require __DIR__.'/functions.php';
+
     $password = '';
     if (isset($_POST['password'])){
         $passwordLength = intval($_POST['password']);
 
-        if($passwordLength >= 4 && $passwordLength <= 15){
-            $availableCharacters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&()*+,-./:;<=>?@[\]^_`{|}~';
-            $max = strlen($availableCharacters) - 1;
-            $min = 0;
-
-            for($i = 0; $i < $passwordLength; $i++){
-                $randomCharacters = $availableCharacters[mt_rand($min, $max)];
-                $password .= $randomCharacters;
-            }
-        }
+        $password = randomPasswordGenerator($_POST['password']);
     }
 ?>
 
@@ -63,15 +56,20 @@
                     </button>
                 </div>
 
+                <?php
+                    if(strlen($password) > 0){
+                ?>
                 <h3 class="text-center mt-4">
                     La tua pasword random è:
-
                     <strong>
                         <?php
                             echo $password;
                         ?>
                     </strong>
                 </h3>
+                <?php
+                    }
+                ?>
 
             </form>
        </div>
