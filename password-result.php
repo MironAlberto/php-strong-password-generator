@@ -1,3 +1,9 @@
+<?php
+    session_start();
+
+    $password = $_SESSION['password'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -26,25 +32,31 @@
     </head>
 
     <body>
-        
-       <div class="container">
-            <h1 class="text-center pt-5 fw-bold">
-                PHP Password Generator
-            </h1>
+        <div class="container d-flex justify-content-center mt-5">
+            <?php
+                if(strlen($password) > 0){
+            ?>
+            <div class="d-flex flex-column align-items-center">
+                <h2 class="text-center mt-4">
+                    La tua password random è:
+                </h2>
+                <h1>
+                    <strong>
+                        <?php
+                            echo $password;
+                        ?>
+                    </strong>
+                </h1>
 
-            <form action="process.php" method="POST" class="row">
-                <div class="col text-center mt-4">
-                    <label for="password">
-                        Lunghezza della tua password
-                    </label>
-                    <input type="number" class="form-control mt-4" id="password" name="password" placeholder='Quanto deve essere lunga la tua password?' required min="4" max="15">
-                </div>
-                <div class="text-center mt-4">
-                    <button class="btn btn-dark" type="submit">
-                        Genera la mia password
-                    </button>
-                </div>
-            </form>
+                <button class="btn btn-dark p-2 mt-3">
+                    <a href="./index.php" class="text-white text-decoration-none">
+                        Torna al generatore di password
+                    </a>
+                </button>
+            </div>
+            <?php
+                }
+            ?>
         </div>
 
         <!-- JS -->
