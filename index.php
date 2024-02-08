@@ -1,3 +1,21 @@
+<?php
+    $password = '';
+    if (isset($_POST['password'])){
+        $passwordLength = intval($_POST['password']);
+
+        if($passwordLength >= 4 && $passwordLength <= 15){
+            $availableCharacters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&()*+,-./:;<=>?@[\]^_`{|}~';
+            $max = strlen($availableCharacters) - 1;
+            $min = 0;
+
+            for($i = 0; $i < $passwordLength; $i++){
+                $randomCharacters = $availableCharacters[mt_rand($min, $max)];
+                $password .= $randomCharacters;
+            }
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,7 +50,7 @@
                 PHP Password Generator
             </h1>
 
-            <form action="" method="post" class="row">
+            <form action="" method="POST" class="row">
                 <div class="col text-center mt-4">
                     <label for="password">
                         Lunghezza della tua password
@@ -44,6 +62,16 @@
                         Genera la mia password
                     </button>
                 </div>
+
+                <h3 class="text-center mt-4">
+                    La tua pasword random è:
+
+                    <strong>
+                        <?php
+                            echo $password;
+                        ?>
+                    </strong>
+                </h3>
 
             </form>
        </div>
